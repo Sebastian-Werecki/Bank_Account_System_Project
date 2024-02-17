@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0002-addColumnOwnerAge
+      author: s_werecki
+      changes:
+        - addColumn:
+            tableName: currency_account
+            columns:
+              - column:
+                  name: owner_age
+                  type: integer
