@@ -5,7 +5,6 @@ import com.sw.bank.adapter.NBPSingleExchangeRateResponse;
 import com.sw.bank.persistence.CurrencyAccount;
 import com.sw.bank.persistence.CurrencyAccountRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,6 +60,14 @@ public class BankController {
     public ResponseEntity<NBPSingleExchangeRateResponse> checkUSDRate() {
 
         var currencyAccount = nbpExchangeRateClient.getRate("A", "USD");
+
+        return ResponseEntity.ok(currencyAccount);
+    }
+
+    @GetMapping("/api/v1/currency-accounts/check-eur-rate")
+    public ResponseEntity<NBPSingleExchangeRateResponse> checkEURRate() {
+
+        var currencyAccount = nbpExchangeRateClient.getRate("A", "EUR");
 
         return ResponseEntity.ok(currencyAccount);
     }
